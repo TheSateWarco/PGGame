@@ -12,6 +12,7 @@ public class FirstPOV : MonoBehaviour {
     private Cinemachine.CinemachineBasicMultiChannelPerlin perlin;  // Perlin Noise component
 
     private float xRotation = 0f;     // Keep track of vertical rotation
+    private float yRotation = 0f;
 
     private void Start() {
         Cursor.lockState = CursorLockMode.Locked; // Lock the cursor to the center of the screen
@@ -27,16 +28,15 @@ public class FirstPOV : MonoBehaviour {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
-        // Adjust vertical rotation (up/down movement)
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Prevent looking too far up/down
+        // Adjust rotations
+        xRotation -= mouseY; // Invert Y for natural look movement
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Prevent flipping
 
-        // Apply rotation: 
-        // - Rotate camera up/down (local)
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        yRotation += mouseX; // Accumulate rotation instead of resetting
 
-        // - Rotate player body left/right (global)
-        playerBody.Rotate(Vector3.up * mouseX);
+        // Apply rotation
+        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f); // Rotate camera properly
+        playerBody.rotation = Quaternion.Euler(0f, yRotation, 0f); // Rotate player body
 
 
     }
