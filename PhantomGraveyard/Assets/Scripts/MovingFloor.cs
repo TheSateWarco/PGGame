@@ -12,6 +12,8 @@ public class MovingFloor : MonoBehaviour {
     [SerializeField] private GameObject prevFloor;     // Previous floor object
     [SerializeField] private float threshold = 20f;    // Threshold for resetting floor position
     [SerializeField] private FirstPOV firstPOV;        // Reference to FirstPOV script
+    [SerializeField] private float xSize;               // size of x
+    [SerializeField] private bool right = true;        // size of x
 
     void Start() {
         if (firstPOV == null) {
@@ -22,13 +24,17 @@ public class MovingFloor : MonoBehaviour {
 
     void Update() {
         // Moving the floor to the right based on current speed
-        transform.Translate(Vector3.right * Time.deltaTime * currentSpeed);
+        if (right) {
+            transform.Translate(Vector3.right * Time.deltaTime * currentSpeed);
+        } else {
+            transform.Translate(Vector3.left * Time.deltaTime * currentSpeed);
+        }
 
         // Check if current floor has passed the threshold
         if (currentFloor.transform.position.x > threshold) {
             Debug.Log("The " + currentFloor.name + " passed below the threshold!");
             // Reset floor position relative to the previous floor
-            currentFloor.transform.position = new Vector3(prevFloor.transform.position.x - 30, prevFloor.transform.position.y, prevFloor.transform.position.z);
+            currentFloor.transform.position = new Vector3(prevFloor.transform.position.x - xSize, prevFloor.transform.position.y, prevFloor.transform.position.z);
         }
 
         // Speed control: Increase speed when W is pressed, decrease with S
