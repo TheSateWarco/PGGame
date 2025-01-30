@@ -1,41 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UIElements;
 
-public class ScrollBG : MonoBehaviour
-{
-    [SerializeField] private GameObject scrollObject;
-    [SerializeField] private float scrollSpeed;
-    [SerializeField]  private SpriteRenderer spriteRenderer;
-    private void Start()
-    {
-        Texture2D yourTexture = Resources.Load<Texture2D>("Assers/Materials/Background/Layer_0003_6.png");
-        // Check if SpriteRenderer is assigned in the Inspector
-        if (spriteRenderer == null)
-        {
-            spriteRenderer = scrollObject.GetComponent<SpriteRenderer>();
-            if (spriteRenderer == null)
-            {
-                spriteRenderer = scrollObject.AddComponent<SpriteRenderer>();
-            }
-        }
+using UnityEngine;
 
-        // Ensure material has a texture
-        if (spriteRenderer.material.mainTexture == null)
-        {
-            // Assign a default texture (replace with your actual texture)
-            spriteRenderer.material.mainTexture = yourTexture;  // Assign texture here
-        }
+public class ScrollBG : MonoBehaviour {
+    [SerializeField] private float scrollSpeed = 2f;
+    private Vector3 startPos;
+    private float resetPosition = -30; // Adjust this based on sprite width
+    private float threshold = -100;
+
+    void Start() {
+        startPos = transform.position;
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        
-        Vector2 currentOffset = spriteRenderer.material.mainTextureOffset;
-        float offset = scrollSpeed * (Time.deltaTime);
-        spriteRenderer.material.mainTextureOffset = new Vector2(currentOffset.x+offset, 0);
-        Debug.Log("offset is " + currentOffset);
+    void Update() {
+        float yPos = transform.position.y;
+        float zPos = transform.position.z;
+        Debug.Log(transform.position);
+        // Move the background leftward
+        transform.Translate(Vector3.left * scrollSpeed * Time.deltaTime);
+
+        // Reset the background position when it moves out of view
+        if (transform.position.x < threshold) {
+            transform.position = new Vector3(resetPosition, yPos, zPos);
+        }
     }
 }
