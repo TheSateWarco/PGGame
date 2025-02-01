@@ -14,6 +14,7 @@ public class MovingFloor : MonoBehaviour {
     [SerializeField] private FirstPOV firstPOV;        // Reference to FirstPOV script
     [SerializeField] private float xSize;               // size of x
     [SerializeField] private bool right = true;        // size of x
+    [SerializeField] private bool rotate = false;
 
     void Start() {
         if (firstPOV == null) {
@@ -23,18 +24,32 @@ public class MovingFloor : MonoBehaviour {
     }
 
     void Update() {
+        
         // Moving the floor to the right based on current speed
-        if (right) {
+        if (right && !rotate) {
             transform.Translate(Vector3.right * Time.deltaTime * currentSpeed);
-        } else {
+        } else if (!right && !rotate){
             transform.Translate(Vector3.left * Time.deltaTime * currentSpeed);
+        }
+        else if (right && rotate)
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * currentSpeed);
+        }
+        else if (right && !rotate)
+        {
+            transform.Translate(Vector3.back * Time.deltaTime * currentSpeed);
         }
 
         // Check if current floor has passed the threshold
-        if (currentFloor.transform.position.x > threshold) {
+        if (currentFloor.transform.position.x > threshold && !rotate) {
             Debug.Log("The " + currentFloor.name + " passed below the threshold!");
             // Reset floor position relative to the previous floor
             currentFloor.transform.position = new Vector3(prevFloor.transform.position.x - xSize, prevFloor.transform.position.y, prevFloor.transform.position.z);
+        }
+        else if (currentFloor.transform.position.z < threshold && !rotate)
+        {
+            // Reset floor position relative to the previous floor
+            currentFloor.transform.position = new Vector3(prevFloor.transform.position.x, prevFloor.transform.position.y, prevFloor.transform.position.z + xSize);
         }
 
         // Speed control: Increase speed when W is pressed, decrease with S
