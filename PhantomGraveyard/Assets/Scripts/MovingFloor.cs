@@ -41,10 +41,10 @@ public class MovingFloor : MonoBehaviour {
         }
 
         // Check if current floor has passed the threshold
-        if (currentFloor.transform.position.x > threshold && !rotate) {
+        if (currentFloor.transform.position.x > threshold && rotate) {
             Debug.Log("The " + currentFloor.name + " passed below the threshold!");
             // Reset floor position relative to the previous floor
-            currentFloor.transform.position = new Vector3(prevFloor.transform.position.x - xSize, prevFloor.transform.position.y, prevFloor.transform.position.z);
+            currentFloor.transform.position = new Vector3(prevFloor.transform.position.x + xSize, prevFloor.transform.position.y, prevFloor.transform.position.z);
         }
         else if (currentFloor.transform.position.z < threshold && !rotate)
         {
