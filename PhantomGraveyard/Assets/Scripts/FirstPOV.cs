@@ -5,7 +5,7 @@ using TreeEditor;
 using UnityEngine;
 
 public class FirstPOV : MonoBehaviour {
-    [SerializeField] private float sensitivity = 200f;  // Mouse sensitivity
+    [SerializeField] private float sensitivity = 100f;  // Mouse sensitivity
     [SerializeField] private Transform playerBody;      // Reference to player object
     [SerializeField] private MovingFloor floor;      // floor moving script
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
@@ -34,7 +34,7 @@ public class FirstPOV : MonoBehaviour {
         
 
         yRotation += mouseX; // Accumulate rotation instead of resetting
-        yRotation = Mathf.Clamp(yRotation, -200f, 20f); // Prevent flipping
+        yRotation = Mathf.Clamp(yRotation, -120f, 20f); // Prevent flipping
         // Apply rotation
         transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f); // Rotate camera properly
         playerBody.rotation = Quaternion.Euler(0f, yRotation, 0f); // Rotate player body

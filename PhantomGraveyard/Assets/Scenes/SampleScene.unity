@@ -302,14 +302,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 5
   deceleration: 5
-  multiplier: 10
-  maxSpeed: 10
+  multiplier: 2
+  maxSpeed: 50
   currentSpeed: 5
   currentFloor: {fileID: 232307987}
-  prevFloor: {fileID: 809676796}
-  threshold: 0
+  prevFloor: {fileID: 1162083126}
+  threshold: 30
   firstPOV: {fileID: 0}
-  xSize: 0
+  xSize: -20
   right: 1
   rotate: 1
 --- !u!4 &232307992 stripped
@@ -385,14 +385,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 5
   deceleration: 5
-  multiplier: 10
-  maxSpeed: 10
+  multiplier: 2
+  maxSpeed: 50
   currentSpeed: 5
   currentFloor: {fileID: 629575363}
-  prevFloor: {fileID: 1899691516}
-  threshold: 0
+  prevFloor: {fileID: 1383289882}
+  threshold: 30
   firstPOV: {fileID: 0}
-  xSize: 0
+  xSize: -20
   right: 1
   rotate: 1
 --- !u!4 &629575368 stripped
@@ -632,14 +632,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 5
   deceleration: 5
-  multiplier: 10
-  maxSpeed: 10
+  multiplier: 2
+  maxSpeed: 50
   currentSpeed: 5
   currentFloor: {fileID: 809676796}
-  prevFloor: {fileID: 1383289882}
-  threshold: 0
+  prevFloor: {fileID: 232307987}
+  threshold: 30
   firstPOV: {fileID: 0}
-  xSize: 0
+  xSize: -20
   right: 1
   rotate: 1
 --- !u!1001 &834464589
@@ -1016,14 +1016,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 5
   deceleration: 5
-  multiplier: 10
-  maxSpeed: 10
+  multiplier: 2
+  maxSpeed: 50
   currentSpeed: 5
   currentFloor: {fileID: 1162083126}
-  prevFloor: {fileID: 232307987}
-  threshold: 0
+  prevFloor: {fileID: 1411548619}
+  threshold: 30
   firstPOV: {fileID: 0}
-  xSize: 0
+  xSize: -20
   right: 1
   rotate: 1
 --- !u!4 &1162083131 stripped
@@ -1055,14 +1055,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 5
   deceleration: 5
-  multiplier: 10
-  maxSpeed: 10
+  multiplier: 2
+  maxSpeed: 50
   currentSpeed: 5
   currentFloor: {fileID: 1383289882}
-  prevFloor: {fileID: 629575363}
-  threshold: 0
+  prevFloor: {fileID: 809676796}
+  threshold: 30
   firstPOV: {fileID: 0}
-  xSize: 0
+  xSize: -20
   right: 1
   rotate: 1
 --- !u!1 &1411548619 stripped
@@ -1084,14 +1084,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 5
   deceleration: 5
-  multiplier: 10
-  maxSpeed: 10
+  multiplier: 2
+  maxSpeed: 50
   currentSpeed: 5
   currentFloor: {fileID: 1411548619}
-  prevFloor: {fileID: 1162083126}
-  threshold: 0
+  prevFloor: {fileID: 1899691516}
+  threshold: 30
   firstPOV: {fileID: 0}
-  xSize: 0
+  xSize: -20
   right: 1
   rotate: 1
 --- !u!4 &1411548624 stripped
@@ -1618,14 +1618,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 5
   deceleration: 5
-  multiplier: 10
-  maxSpeed: 10
+  multiplier: 2
+  maxSpeed: 50
   currentSpeed: 5
   currentFloor: {fileID: 1899691516}
-  prevFloor: {fileID: 1411548619}
-  threshold: 0
+  prevFloor: {fileID: 629575363}
+  threshold: 30
   firstPOV: {fileID: 0}
-  xSize: 0
+  xSize: -20
   right: 1
   rotate: 1
 --- !u!4 &1899691521 stripped
@@ -1718,7 +1718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ccf7b0eb4fe0e4c906e51f9809e1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 5000
+  sensitivity: 2500
   playerBody: {fileID: 2115653286}
   floor: {fileID: 0}
   virtualCamera: {fileID: 2078113052}
